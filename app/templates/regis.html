@@ -10,11 +10,14 @@
 <form method="post">
     {{ form.csrf_token }}
     <div class="form_group">
-        {{ form.name.label }}
-        {{ form.name(class='form-control', placeholder='Enter Full Name') }}
+        {{ form.first_name.label }}
+        {{ form.first_name(class='form-control', placeholder='Enter First Name') }}
+
+        {{ form.last_name.label }}
+        {{ form.last_name(class='form-control', placeholder='Enter Last Name') }}
 
         {{ form.phone_number.label }}
-        {{ form.phone_number(class='form-control', placeholder='Enter Phone Number') }}
+        {{ form.phone_number(class='form-control', placeholder='Enter Phone Number with area code') }}
 
         {{ form.address.label }}
         {{ form.address(class='form-control', placeholder='Enter Address') }}

@@ -6,9 +6,8 @@
 {% block content %}
 
 <h1 class="h1">Welcome to my page!</h1>
-<div class="bird bg-dark">
-<img src="{{url_for('static', filename='cockatiel.jpg')}}"/>
-</div>
-
+    <div class="bird mt-5">
+        <img src="{{url_for('static', filename='cockatiel.jpg')}}" alt="cutebird" class="bird rounded w-50"/>
+    </div>
 
 {% endblock content %}

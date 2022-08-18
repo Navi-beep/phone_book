@@ -1,7 +1,7 @@
 from app import app
-from flask import render_template, redirect, url_for
-from app.forms import RegisterForm
-from app.models import Contact
+from flask import render_template, redirect, url_for, flash
+from app.forms import Create_account
+from app.models import User
 
 
 
@@ -9,17 +9,30 @@ from app.models import Contact
 def index():
     return render_template('index.html')
 
-@app.route('/regis', methods=['GET', 'POST'])
-def regis():
-    form = RegisterForm()
+@app.route('/createacct', methods=['GET', 'POST'])
+def createacct():
+    form = Create_account()
     if form.validate_on_submit():
         print('Form is validated. NICE')
-        first_name = form.first_name.data
-        last_name = form.last_name.data
-        phone_number = form.phone_number.data
-        address = form.address.data
-        new_contact = Contact(first_name=first_name, last_name=last_name, phone_number = phone_number, address=address)
-        print(f"{new_contact.first_name} has been added to address book.")
+        email = form.email.data
+        username = form.username.data
+        password = form.password.data
+        existing_user = User.query.filter((User.email == email) | (User.username == username)).first()
+        if existing_user:
+            flash('A user with that username or email already exists!', 'danger')
+            return redirect(url_for('createacct'))
+        new_user = User(email=email, username=username, password=password)
+        flash(f"{new_user.username} has been added to page!", "success")
         return redirect(url_for('index')) 
-    return render_template('regis.html', form=form)
+    return render_template('createacct.html', form=form)
+
+
+
+
+
+
+
+
+
+
 

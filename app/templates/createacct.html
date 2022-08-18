@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Homes {% endblock title %}
+
+
+{% block content %}
+
+<h1 class="h1">Create an account here!</h1>
+
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form_group">
+        {{ form.email.label(class='fn mt-2')}}
+        {{ form.email(class='form-control mt-2', placeholder='Enter email') }}
+
+        {{ form.username.label(class='ln mt-2') }}
+        {{ form.username(class='form-control mt-2', placeholder='Enter username') }}
+
+        {{ form.password.label }}
+        {{ form.password(class='form-control mt-2', placeholder='Enter Password') }}
+
+        {{ form.confirm_pass.label }}
+        {{ form.confirm_pass(class='form-control mt-2', placeholder='Confirm Password') }}
+
+        {{ form.submit(class='btn btn-dark w-100 mt-3') }}
+
+    </div>
+
+</form>
+
+{% endblock content %}

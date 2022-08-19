@@ -1,4 +1,4 @@
-from app import db
+from app import db, login
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -31,9 +31,9 @@ class User(db.Model, UserMixin):
         self.password = generate_password_hash(password)
         db.session.commit()
 
-#@login.user_loader
-#def load_user(user_id):
-#    return User.query.get(user_id)
+@login.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 class Add_Contact(db.Model):

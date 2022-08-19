@@ -15,16 +15,16 @@
 {% if current_user.is_authenticated %}
     <h6 class="text-center">Signed in as: {{ current_user.username }}</h6>
 
-    {% for contact in contacts %}
+    {% for contact in addresses %}
 
-    <div class="card" style="width: 18rem;">
+    <div class="card">
         <div class="card-header">
           Featured
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{ Add_Contact.first_name }} {{ Add_Contact.last_name }} </li>
-          <li class="list-group-item">{ Add_Contact.phone_number }}</li>
-          <li class="list-group-item">{{ Add_Contact.address }}</li>
+          <li class="list-group-item">{{ contact.first_name }} {{ contact.last_name }} </li>
+          <li class="list-group-item">{ contact.phone_number }}</li>
+          <li class="list-group-item">{{ contact.address }}</li>
         </ul>
       </div>
     {% endfor %}

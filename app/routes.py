@@ -1,7 +1,7 @@
-#from email.headerregistry import Address
 from app import app
 from flask import render_template, redirect, url_for, flash
-from app.forms import Create_account, AddressForm
+from flask_login import login_user, logout_user, login_required, current_user 
+from app.forms import Create_account, AddressForm, LoginForm
 from app.models import User, Add_Contact
 
 
@@ -36,10 +36,43 @@ def addcontact():
         last_name = form.first_name.data
         phone_number = form.phone_number.data
         address = form.address.data
-        new_contact = AddressForm(first_name= first_name, last_name = last_name, phone_number = phone_number, address=address)
+        new_contact = Add_Contact(first_name= first_name, last_name = last_name, phone_number = phone_number, address=address)
         print(f"{new_contact.first_name} has been added to address book.")
         return redirect(url_for('index')) 
     return render_template('addcontact.html', form=form)
+
+
+@app.route('/Login', methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.username.data
+        user = User.query.filter_by(username=username).first()
+        if user is not None and user.check_password(password):
+            login_user(user)
+            flash("Welcome back {user.username}!", "success")
+            return redirect(url_for('index'))
+
+        else:
+            flash('Bad username and/or password. Please try this again', 'danger')
+            return redirect (url_for('login'))
+    return render_template('login.html', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    flash('You have now logged out. Thanks for stopping by, have a nice day!', 'primary')
+    return redirect(url_for('index'))
+
+
+#@app.route()
+
+
+        
+
+
+
 
 
 

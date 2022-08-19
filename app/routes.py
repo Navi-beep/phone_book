@@ -29,6 +29,7 @@ def createacct():
     return render_template('createacct.html', form=form)
 
 @app.route('/addcontact', methods=['GET', 'POST'])
+@login_required 
 def addcontact():
     form = AddressForm()
     if form.validate_on_submit():
@@ -42,8 +43,8 @@ def addcontact():
     return render_template('addcontact.html', form=form)
 
 
-@app.route('/loginpage', methods=["GET", "POST"])
-def loginpage():
+@app.route('/login', methods=["GET", "POST"])
+def login():
     form = LoginForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -56,8 +57,8 @@ def loginpage():
 
         else:
             flash('Bad username and/or password. Please try this again', 'danger')
-            return redirect (url_for('loginpage'))
-    return render_template('loginpage.html', form=form)
+            return redirect (url_for('login'))
+    return render_template('login.html', form=form)
 
 @app.route('/logout')
 def logout():
@@ -66,7 +67,11 @@ def logout():
     return redirect(url_for('index'))
 
 
-#@app.route()
+@app.route('/addresses/<Add_Contact_id>')
+@login_required
+def view_contact(Add_Contact_id):
+    Add_Contact = Add_Contact.query.get_or_404(Add_Contact_id)
+    return render_template('addresses.html', Add_Contact=Add_Contact)
 
 
         

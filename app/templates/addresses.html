@@ -1,0 +1,14 @@
+{% extends 'base.html %}
+
+{% block title %} {{ Add_Contact.first_name }} {% endblock title %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ Add_Contact.first_name }} {{ Add_Contact.last_name }} </h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{Add_contact.author.username }}</h6>
+      <h6 class="text-center"> {{ Add_Contact.date_created.strftime('%A, %B %d, %Y') }}</h6>
+      <p class="card-text">{ Add_Contact.phone_number }} , {{ Add_Contact.address }}</p>
+    </div>
+  </div>
+
+  
+{% endblock content %}

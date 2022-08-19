@@ -23,12 +23,12 @@
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a> </li>
                     {% if current_user.is_authenticated %}
-                    <li class="nav-item"> <a class="nav-link" href="#">Add to your Phone Book</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/addcontact">Add to your Phone Book</a></li>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Log Out</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
                     <li class="nav-item"> <a class="nav-link" href="/createacct">Make an account</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('loginpage') }}">Log In</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('login') }}">Log In</a></li>
                     </ul>
                     {% endif %}
               </div>

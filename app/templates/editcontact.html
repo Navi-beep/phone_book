@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %} Add Contact {% endblock title %}
+{% block title %} Edit Contact {% endblock title %}
 
 
 {% block content %}
 
-<h1 class="h1">Add to your Phone Book here!</h1>
+<h1 class="h1">Edit a contact Phone Book here!</h1>
 
 <form method="post">
     {{ form.csrf_token }}
     <div class="form_group">
         {{ form.first_name.label(class='fn mt-2')}}
-        {{ form.first_name(class='form-control mt-2', placeholder='Enter First Name') }}
+        {{ form.first_name(class='form-control mt-2', value=Add_Contact.first_name) }}
 
         {{ form.last_name.label(class='ln mt-2') }}
-        {{ form.last_name(class='form-control mt-2', placeholder='Enter Last Name') }}
+        {{ form.last_name(class='form-control mt-2', value=Add_Contact.last_name) }}
 
         {{ form.phone_number.label(class='pn mt-2') }}
-        {{ form.phone_number(class='form-control mt-2', placeholder='Enter Phone Number with area code') }}
+        {{ form.phone_number(class='form-control mt-2', value=Add_Contact.phone_number) }}
 
         {{ form.address.label(class='ad mt-2')}}
-        {{ form.address(class='form-control mt-2', placeholder='Enter Address') }}
+        {{ form.address(class='form-control mt-2', pvalue=Add_Contact.address) }}
 
         {{ form.submit(class='btn btn-dark w-75 mt-4 border border-secondary bg-gradient') }}
 

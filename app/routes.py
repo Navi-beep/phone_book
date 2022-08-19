@@ -42,8 +42,8 @@ def addcontact():
     return render_template('addcontact.html', form=form)
 
 
-@app.route('/login', methods=["GET", "POST"])
-def login():
+@app.route('/loginpage', methods=["GET", "POST"])
+def loginpage():
     form = LoginForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -56,8 +56,8 @@ def login():
 
         else:
             flash('Bad username and/or password. Please try this again', 'danger')
-            return redirect (url_for('login'))
-    return render_template('login.html', form=form)
+            return redirect (url_for('loginpage'))
+    return render_template('loginpage.html', form=form)
 
 @app.route('/logout')
 def logout():

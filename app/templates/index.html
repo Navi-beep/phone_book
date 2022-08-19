@@ -17,13 +17,13 @@
 
     {% for contact in addresses %}
 
-    <div class="card">
+    <div class="card mt-3">
         <div class="card-header">
-          Featured
+          Contact:
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">{{ contact.first_name }} {{ contact.last_name }} </li>
-          <li class="list-group-item">{ contact.phone_number }}</li>
+          <li class="list-group-item">{{ contact.phone_number }}</li>
           <li class="list-group-item">{{ contact.address }}</li>
         </ul>
       </div>

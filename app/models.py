@@ -58,6 +58,3 @@ class User(db.Model, UserMixin):
         self.password = generate_password_hash(password)
         db.session.commit()
 
-
-
-

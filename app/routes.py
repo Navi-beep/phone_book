@@ -38,7 +38,7 @@ def addcontact():
         phone_number = form.phone_number.data
         address = form.address.data
         new_contact = Add_Contact(first_name= first_name, last_name = last_name, phone_number = phone_number, address=address)
-        print(f"{new_contact.first_name} has been added to address book.")
+        flash(f"{new_contact.first_name} has been added to address book.")
         return redirect(url_for('index')) 
     return render_template('addcontact.html', form=form)
 
@@ -70,8 +70,8 @@ def logout():
 @app.route('/addresses/<Add_Contact_id>')
 @login_required
 def view_contact(Add_Contact_id):
-    Add_Contact = Add_Contact.query.get_or_404(Add_Contact_id)
-    return render_template('addresses.html', Add_Contact=Add_Contact)
+    contact = Add_Contact.query.get_or_404(Add_Contact_id)
+    return render_template('addresses.html', contact=contact)
 
 
         

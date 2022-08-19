@@ -6,9 +6,32 @@
 {% block content %}
 
 <h1 class="h1">Welcome to my page!</h1>
+
 <h3 class="h3">Stay and check things out!</h3>
     <div class="bird mt-4">
         <img src="{{url_for('static', filename='cockatiel.jpg')}}" alt="cutebird" class="bird rounded w-50"/>
     </div>
+
+{% if current_user.is_authenticated %}
+    <h6 class="text-center">Signed in as: {{ current_user.username }}</h6>
+
+    {% for contact in contacts %}
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Featured
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ Add_Contact.first_name }} {{ Add_Contact.last_name }} </li>
+          <li class="list-group-item">{ Add_Contact.phone_number }}</li>
+          <li class="list-group-item">{{ Add_Contact.address }}</li>
+        </ul>
+      </div>
+    {% endfor %}
+
+    {% else %}
+      <h4 class="text-center"> Please Sign Up for Log In to view contacts</h4>
+    {% endif %}
+
 
 {% endblock content %}

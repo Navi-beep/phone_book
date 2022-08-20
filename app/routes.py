@@ -69,9 +69,9 @@ def logout():
 
 @app.route('/addresses/<Add_Contact_id>')
 @login_required
-def view_contact(Add_Contact_id):
-    contact = Add_Contact.query.get_or_404(Add_Contact_id)
-    return render_template('addresses.html', contact=contact)
+def view_address(Add_Contact_id):
+    address = Add_Contact.query.get_or_404(Add_Contact_id)
+    return render_template('addresses.html', address=address)
 
 
         

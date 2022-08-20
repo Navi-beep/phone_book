@@ -74,6 +74,38 @@ def view_address(address_id):
     return render_template('address.html', address=address)
 
 
+@app.route('/addresses/<address_id>/edit', methods=["GET", "POST"])
+@login_required
+def edit_post(address_id):
+    address_to_edit = Add_Contact.query.get_or_404(address_id)
+    if address_to_edit.author != current_user:
+        flash("You do not have permission to edit this address!", "danger")
+        return redirect(url_for('view_address', address_id = address_id))
+    form = Add_Contact()
+    if form.validate_on_submit():
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        phone_number = form.phone_number.data
+        address = form.address.data
+        address_to_edit.update_info(first_name = first_name, last_name=last_name, phone_number=phone_number, address=address)
+        flash(f"{address_to_edit.first_name} has been updated", "success")
+        return redirect(url_for('view_address', address_id = address_id))
+    return render_template('editcontact.html', address=address_to_edit, form=form)
+
+
+@app.route('/addresses/<address_id>/delete')
+@login_required
+def delete_address(address_id):
+    address_to_delete = Add_Contact.query.get_or_404(address_id)
+    if address_to_delete.author != current_user:
+        flash("You do not have permission to delete this address!", "danger")
+        return redirect(url_for('index'))
+
+    address_to_delete.delete()
+    flash(f"{address_to_delete.first_name} has been deleted", "info")
+    return redirect(url_for('index'))
+
+
         
 
 

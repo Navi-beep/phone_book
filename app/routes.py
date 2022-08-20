@@ -67,11 +67,11 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/addresses/<Add_Contact_id>')
-@login_required
-def view_address(Add_Contact_id):
-    address = Add_Contact.query.get_or_404(Add_Contact_id)
-    return render_template('addresses.html', address=address)
+@app.route('/addresses/<address_id>')
+@login_required 
+def view_address(address_id):
+    address = Add_Contact.query.get_or_404(address_id)
+    return render_template('address.html', address=address)
 
 
         

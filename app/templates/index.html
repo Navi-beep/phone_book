@@ -22,7 +22,7 @@
           Contact:
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{ address.author.username }}</li>
+          <li class="list-group-item"> added by: {{ address.author.username }}</li>
           <a href="{{ url_for('view_address', address_id=address.id) }}">
             <li class="list-group-item">{{ address.first_name }} {{ address.last_name }} </li>
           </a>

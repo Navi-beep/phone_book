@@ -76,7 +76,7 @@ def view_address(address_id):
 
 @app.route('/addresses/<address_id>/edit', methods=["GET", "POST"])
 @login_required
-def edit_post(address_id):
+def edit_address(address_id):
     address_to_edit = Add_Contact.query.get_or_404(address_id)
     if address_to_edit.author != current_user:
         flash("You do not have permission to edit this address!", "danger")

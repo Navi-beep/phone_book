@@ -9,7 +9,7 @@
 
 <h3 class="h3">Stay and check things out!</h3>
     <div class="bird mt-4">
-        <img src="{{url_for('static', filename='cockatiel.jpg')}}" alt="cutebird" class="bird rounded w-50"/>
+        <img src="{{url_for('static', filename='cockatiel.jpg')}}" alt="cutebird" class="bird rounded w-25"/>
     </div>
 
 {% if current_user.is_authenticated %}
@@ -22,8 +22,8 @@
           Contact:
         </div>
         <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ address.author.username }}</li>
           <a href="{{ url_for('view_address', address_id=address.id) }}">
-
             <li class="list-group-item">{{ address.first_name }} {{ address.last_name }} </li>
           </a>
           <li class="list-group-item">{{ address.phone_number }}</li>

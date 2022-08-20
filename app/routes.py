@@ -24,7 +24,7 @@ def createacct():
             flash('A user with that username or email already exists!', 'danger')
             return redirect(url_for('createacct'))
         new_user = User(email=email, username=username, password=password)
-        flash(f"{new_user.username} has been added to page!", "success")
+        flash(f"{new_user.username} has been added to site!", "success")
         return redirect(url_for('index')) 
     return render_template('createacct.html', form=form)
 

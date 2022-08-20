@@ -34,11 +34,11 @@ def addcontact():
     form = AddressForm()
     if form.validate_on_submit():
         first_name = form.first_name.data
-        last_name = form.first_name.data
+        last_name = form.last_name.data
         phone_number = form.phone_number.data
         address = form.address.data
-        new_contact = Add_Contact(first_name= first_name, last_name = last_name, phone_number = phone_number, address=address)
-        flash(f"{new_contact.first_name} has been added to address book.")
+        new_contact = Add_Contact(first_name = first_name, last_name = last_name, phone_number = phone_number, address=address)
+        flash(f"{new_contact.first_name} has been added to address book.", "info")
         return redirect(url_for('index')) 
     return render_template('addcontact.html', form=form)
 
@@ -52,7 +52,7 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user is not None and user.check_password(password):
             login_user(user)
-            flash("Welcome back {user.username}!", "success")
+            flash(f"Welcome back {user.username}!", "success")
             return redirect(url_for('index'))
 
         else:

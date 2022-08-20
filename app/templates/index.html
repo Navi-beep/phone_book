@@ -6,19 +6,19 @@
 {% block content %}
 
 <h1 class="h1">Welcome to my page!</h1>
-
-<h3 class="h3">Stay and check things out!</h3>
+<h5>Make an account, so you can create your own phone book</h5>
     <div class="bird mt-4">
         <img src="{{url_for('static', filename='cockatiel.jpg')}}" alt="cutebird" class="bird rounded w-25"/>
     </div>
+
 
 {% if current_user.is_authenticated %}
     <h6 class="text-center">Signed in as: {{ current_user.username }}</h6>
 
     {% for address in addresses %}
 
-    <div class="card mt-3">
-        <div class="card-header">
+    <div class="card mt-3" style="background-color: #430298;">
+        <div class="card-header text-white">
           Contact:
         </div>
         <ul class="list-group list-group-flush">

@@ -6,12 +6,12 @@
 
 {% block content %}
 
-<div class="card mt-3">
-    <div class="card-header">
+<div class="card mt-3" style="background-color: #430298;">
+    <div class="card-header text-white">
       Contact:
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{ address.author.username }}</li>
+      <li class="list-group-item"> added by: {{ address.author.username }}</li>
       <li class="list-group-item">{{ address.first_name }} {{ address.last_name }} </li>
       <li class="list-group-item">{{ address.phone_number }}</li>
       <li class="list-group-item">{{ address.address }}</li>
@@ -19,10 +19,9 @@
   </div>
 
     {% if current_user == address.author %}
-      <div class="d-flex">
-          <a href="{{ url_for('edit_address', address_id=address.id) }}" class="btn btn-success w-50">Edit Address</a>
-
-          <button type="button" class="btn btn-danger w-50" data-bs-toggle="modal" data-bs-target="#deleteModal">
+      <div class="d-flex mt-3">
+          <a href="{{ url_for('edit_address', address_id=address.id) }}" class="btn btn-success w-50" style="background-color: #3c3c6b;">Edit Address</a>
+          <button type="button" class="btn btn-danger w-50" style="background-color: #980202;" data-bs-toggle="modal" data-bs-target="#deleteModal">
             Delete Post
           </button>
       </div>

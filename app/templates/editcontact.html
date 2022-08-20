@@ -11,16 +11,16 @@
     {{ form.csrf_token }}
     <div class="form_group">
         {{ form.first_name.label(class='fn mt-2')}}
-        {{ form.first_name(class='form-control mt-2', value=Add_Contact.first_name) }}
+        {{ form.first_name(class='form-control mt-2', value=address.first_name) }}
 
         {{ form.last_name.label(class='ln mt-2') }}
-        {{ form.last_name(class='form-control mt-2', value=Add_Contact.last_name) }}
+        {{ form.last_name(class='form-control mt-2', value=address.last_name) }}
 
         {{ form.phone_number.label(class='pn mt-2') }}
-        {{ form.phone_number(class='form-control mt-2', value=Add_Contact.phone_number) }}
+        {{ form.phone_number(class='form-control mt-2', value=address.phone_number) }}
 
         {{ form.address.label(class='ad mt-2')}}
-        {{ form.address(class='form-control mt-2', value=Add_Contact.address) }}
+        {{ form.address(class='form-control mt-2', value=address.address) }}
 
         {{ form.submit(class='btn btn-dark w-75 mt-4 border border-secondary bg-gradient') }}
 

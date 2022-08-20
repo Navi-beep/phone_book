@@ -15,16 +15,19 @@
 {% if current_user.is_authenticated %}
     <h6 class="text-center">Signed in as: {{ current_user.username }}</h6>
 
-    {% for contact in addresses %}
+    {% for address in addresses %}
 
     <div class="card mt-3">
         <div class="card-header">
           Contact:
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{ contact.first_name }} {{ contact.last_name }} </li>
-          <li class="list-group-item">{{ contact.phone_number }}</li>
-          <li class="list-group-item">{{ contact.address }}</li>
+          <a href="{{ url_for('view_address', address_id=address.id) }}">
+
+            <li class="list-group-item">{{ address.first_name }} {{ address.last_name }} </li>
+          </a>
+          <li class="list-group-item">{{ address.phone_number }}</li>
+          <li class="list-group-item">{{ address.address }}</li>
         </ul>
       </div>
     {% endfor %}

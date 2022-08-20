@@ -41,7 +41,7 @@ class Add_Contact(db.Model):
     phone_number = db.Column(db.String(20), nullable=False, unique=True)
     address = db.Column(db.String(250), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) 
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
 
 
     def __init__(self, **kwargs):

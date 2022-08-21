@@ -36,8 +36,8 @@ def addcontact():
         first_name = form.first_name.data
         last_name = form.last_name.data
         phone_number = form.phone_number.data
-        address_1 = form.address.data
-        new_contact = Add_Contact(first_name = first_name, last_name = last_name, phone_number = phone_number, address=address_1, user_id = current_user.id)
+        address = form.address.data
+        new_contact = Add_Contact(first_name = first_name, last_name = last_name, phone_number = phone_number, address=address, user_id = current_user.id)
         flash(f"{new_contact.first_name} has been added to address book.", "info")
         return redirect(url_for('index')) 
     return render_template('addcontact.html', form=form)
@@ -79,7 +79,7 @@ def view_address(address_id):
 def edit_address(address_id):
     address_to_edit = Add_Contact.query.get_or_404(address_id)
     if address_to_edit.author != current_user:
-        flash("You do not have permission to edit this address!", "danger")
+        flash("I'm Sorry Dave, I'm Afraid I Can't Do That, you do not have permission", "danger")
         return redirect(url_for('view_address', address_id = address_id))
     form = Add_Contact()
     if form.validate_on_submit():
@@ -98,7 +98,7 @@ def edit_address(address_id):
 def delete_address(address_id):
     address_to_delete = Add_Contact.query.get_or_404(address_id)
     if address_to_delete.author != current_user:
-        flash("You do not have permission to delete this address!", "danger")
+        flash("I'm Sorry Dave, I'm Afraid I Can't Do That, you do not have permission", "danger")
         return redirect(url_for('index'))
 
     address_to_delete.delete()

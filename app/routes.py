@@ -81,7 +81,7 @@ def edit_address(address_id):
     if address_to_edit.author != current_user:
         flash("I'm Sorry Dave, I'm Afraid I Can't Do That, you do not have permission", "danger")
         return redirect(url_for('view_address', address_id = address_id))
-    form = Add_Contact()
+    form = AddressForm()
     if form.validate_on_submit():
         first_name = form.first_name.data
         last_name = form.last_name.data
